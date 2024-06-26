@@ -1,0 +1,21 @@
+<!-- error.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page</title>
+</head>
+<body>
+<h1>Error Page</h1>
+<div>
+    <p>Error: <span th:text="${errorMessage}">Unknown error occurred</span></p>
+    <button onclick="goToMain()">Go to Main</button>
+</div>
+
+<script>
+    function goToMain() {
+        window.location.href = '/main';
+    }
+</script>
+</body>
+</html>

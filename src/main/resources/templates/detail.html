@@ -1,0 +1,30 @@
+<!-- detail.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Page</title>
+</head>
+<body>
+<h1>Detail Page</h1>
+<div>
+    <h2 th:text="${title}">Title</h2>
+    <p>Created Date: <span th:text="${createdDate}">Created Date</span></p>
+    <p>Updated Date: <span th:text="${updatedDate}">Updated Date</span></p>
+    <button id="likeButton" th:text="${like ? 'Unlike' : 'Like'}" onclick="toggleLike()"></button>
+</div>
+
+<script>
+    function toggleLike() {
+        var likeButton = document.getElementById('likeButton');
+        if (likeButton.innerText === 'Like') {
+            likeButton.innerText = 'Unlike';
+            // AJAX request to update like status to true
+        } else {
+            likeButton.innerText = 'Like';
+            // AJAX request to update like status to false
+        }
+    }
+</script>
+</body>
+</html>

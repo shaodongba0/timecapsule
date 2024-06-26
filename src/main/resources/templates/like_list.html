@@ -1,0 +1,19 @@
+<!-- like_list.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Like List Page</title>
+</head>
+<body>
+<h1>Like List Page</h1>
+<ul>
+    <li th:each="item : ${likeItems}">
+        <a th:href="${item.viewableDate.isAfter(#dates.createNow()) ? '/detail' : '/viewable_detail'}">
+            <span th:text="${item.title}">Title</span>
+        </a>
+        <span th:text="${item.createdDate}">Created Date</span>
+    </li>
+</ul>
+</body>
+</html>
