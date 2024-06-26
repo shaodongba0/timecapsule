@@ -7,6 +7,7 @@ import org.example.timecapsule.service.BoardService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/board")
@@ -48,5 +49,18 @@ public class BoardController {
     public String update(RequestBoardDTO requestBoardDTO) throws Exception {
         boardService.update(requestBoardDTO);
         return "redirect:/board/" + requestBoardDTO.getId();
+    }
+
+
+    @GetMapping("/{id}")
+    public String addLike(@PathVariable UUID id, RequestBoardDTO requestBoardDTO) {
+        boardService.addLike(id, requestBoardDTO);
+        return "detail";
+    }
+
+    @GetMapping("/delete/{boardId}")
+    public String deleteLike(@PathVariable UUID id, RequestBoardDTO requestBoardDTO) {
+        boardService.deleteLike(id, requestBoardDTO);
+        return "detail";
     }
 }

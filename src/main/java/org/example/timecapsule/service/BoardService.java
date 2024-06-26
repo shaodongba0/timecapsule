@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -101,4 +102,11 @@ public class BoardService {
     }
 
 
+    public void addLike(UUID id, RequestBoardDTO requestBoardDTO) {
+        requestBoardDTO.setLike(true);
+    }
+
+    public void deleteLike(UUID id, RequestBoardDTO requestBoardDTO) {
+        requestBoardDTO.setLike(false);
+    }
 }
