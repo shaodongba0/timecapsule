@@ -54,6 +54,21 @@ public class BoardService {
 //        return responseBoardDTO;
     }
 
+    public List<ResponseBoardDTO> findByLike(RequestBoardDTO requestBoardDTO) {
+        List<BoardEntity> boardEntityList = boardRepository.findAll();
+
+        // like가 true인 게시물 필터링
+        List<BoardEntity> likedBoards = boardEntityList.stream()
+                .filter(BoardEntity::isLike) // BoardEntity의 isLike 메서드를 사용하여 필터링
+                .collect(Collectors.toList()); // 필터링된 결과를 List로 수집하여 likedBoards에 저장
+
+    // 필터링된 게시물들을 ResponseBoardDTO로 변환
+        List<ResponseBoardDTO> responseBoardDTOList = likedBoards.stream()
+                .map(ResponseBoardDTO::toBoardDTO) // ResponseBoardDTO의 toBoardDTO 메서드를 사용하여 BoardEntity를 ResponseBoardDTO로 변환
+                .collect(Collectors.toList()); // 변환된 결과를 List로 수집하여 responseBoardDTOList에 저장
+
+        return responseBoardDTOList;
+    }
 
 
     public void deleteById(RequestBoardDTO requestBoardDTO) {

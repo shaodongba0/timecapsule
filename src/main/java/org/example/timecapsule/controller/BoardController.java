@@ -32,6 +32,11 @@ public class BoardController {
        return responseBoardDTO;
     }
 
+    @GetMapping({"/findByLike"})
+    public List findByLike(RequestBoardDTO requestBoardDTO) {
+        List<ResponseBoardDTO> responseBoardDTOList = boardService.findByLike(requestBoardDTO);
+        return responseBoardDTOList;
+    }
 
     @GetMapping("/{id}/delete")
     public String deleteById(RequestBoardDTO requestBoardDTO) {

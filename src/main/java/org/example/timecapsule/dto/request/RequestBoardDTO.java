@@ -20,5 +20,6 @@ public class RequestBoardDTO {
 
     private String content;
 
+    private boolean like;
 
 }

@@ -36,6 +36,8 @@ public class BoardEntity {
     @Column
     private LocalDateTime viewableDate;
 
+    @Column
+    private boolean like;
 
     public static BoardEntity toArticleEntity(RequestBoardDTO requestBoardDTO) {
         BoardEntity boardEntity = new BoardEntity();

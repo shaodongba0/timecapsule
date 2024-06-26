@@ -27,6 +27,7 @@ public class ResponseBoardDTO {
 
     private LocalDateTime viewableDate;
 
+    private boolean like;
 
 
     public static ResponseBoardDTO toBoardDTO(BoardEntity boardEntityList) {
@@ -37,6 +38,7 @@ public class ResponseBoardDTO {
         responseBoardDTO.setContent(boardEntityList.getContent());
         responseBoardDTO.setCreatedDate(boardEntityList.getCreatedDate());
         responseBoardDTO.setUpdatedDate(boardEntityList.getUpdatedDate());
+        responseBoardDTO.setLike(boardEntityList.isLike());
 //        responseBoardDTO.setViewableDate(boardEntityList.getViewableDate());
 
         return responseBoardDTO;
