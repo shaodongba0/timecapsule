@@ -38,21 +38,15 @@ public class BoardService {
     public ResponseBoardDTO findById(RequestBoardDTO requestBoardDTO) {
         Optional<BoardEntity> boardEntityOptional = boardRepository.findById(requestBoardDTO.getId());
 
-        if (boardEntityOptional.isPresent()) {
-            BoardEntity boardEntity = boardEntityOptional.get();
-            // viewableDate가 지났으면 전체 내용 반환
+        return boardEntityOptional.map(boardEntity -> {
             if (boardEntity.getViewableDate().isBefore(LocalDateTime.now())) {
                 return ResponseBoardDTO.toBoardDTO(boardEntity);
-            } else { // viewableDate가 지나지 않았으면 제한된 내용 반환
+            } else {
                 return ResponseBoardDTO.toDTOWithLimitedContent(boardEntity);
             }
-        } else {
-            return null;
-        }
-
-//        ResponseBoardDTO responseBoardDTO = ResponseBoardDTO.toBoardDTO(boardEntity);
-//        return responseBoardDTO;
+        }).orElse(null);
     }
+
 
     public List<ResponseBoardDTO> findByLike(RequestBoardDTO requestBoardDTO) {
         List<BoardEntity> boardEntityList = boardRepository.findAll();
