@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: timecapsule
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/bootex
+    username: root
+    password: a41596037!
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+aws:
+  access-key-id: ${AWS_ACCESS_KEY_ID}
+  secret-access-key: ${AWS_SECRET_ACCESS_KEY}
