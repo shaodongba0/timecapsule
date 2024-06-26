@@ -27,7 +27,7 @@ public class BoardController {
         return responseBoardDTOList;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/findById/{id}")
     public ResponseBoardDTO findById(RequestBoardDTO requestBoardDTO) {
        ResponseBoardDTO responseBoardDTO = boardService.findById(requestBoardDTO);
        return responseBoardDTO;
@@ -52,13 +52,13 @@ public class BoardController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/like/{id}")
     public String addLike(@PathVariable UUID id, RequestBoardDTO requestBoardDTO) {
         boardService.addLike(id, requestBoardDTO);
         return "detail";
     }
 
-    @GetMapping("/delete/{boardId}")
+    @GetMapping("/unlike/{id}")
     public String deleteLike(@PathVariable UUID id, RequestBoardDTO requestBoardDTO) {
         boardService.deleteLike(id, requestBoardDTO);
         return "detail";
